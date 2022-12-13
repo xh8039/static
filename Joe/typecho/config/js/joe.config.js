@@ -1,4 +1,6 @@
 document.addEventListener("DOMContentLoaded", function () {
+	Joe.domain = window.location.host;
+	Joe.service_domain = '//auth.bri6.cn/server/joe/';
 	var e = document.querySelectorAll(".joe_config__aside .item"),
 		t = document.querySelector(".joe_config__notice"),
 		s = document.querySelector(".joe_config > form"),
