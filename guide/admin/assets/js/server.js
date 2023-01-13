@@ -1,7 +1,7 @@
 (function () {
 	$.ajax({
 		type: "get",
-		url: 'server.php/getAuth.json',
+		url: 'server.php/getAuth?action=getAuth',
 		dataType: "json",
 		success: function (response) {
 			if (response.auth) {
@@ -103,7 +103,7 @@
 					btnClass: 'btn-dark',
 					text: '已施舍 刷新状态',
 					action: function () {
-						$.get('server.php/clear.json', { name: 'auth' },
+						$.get('server.php/clear?action=getNews', { name: 'auth' },
 							function (data) {
 								window.location.reload();
 							}
@@ -124,7 +124,7 @@
 	if (window.SERVER.DEMO_MODE) {
 		return;
 	}
-	$.get('server.php/getNews.json',
+	$.get('server.php/getNews?action=getNews',
 		(data) => {
 			$('#server_msg').css('display', 'block');
 			$('#server_msg span span').text(data.length);
