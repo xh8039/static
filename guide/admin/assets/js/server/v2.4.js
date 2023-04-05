@@ -23,6 +23,11 @@
 	});
 	function shade() {
 		$("body>.shade").remove();
+		$(document).ready(function () {
+			setTimeout(function () {
+				$("#loading-animation").fadeOut(500);
+			}, 500);
+		})
 	}
 	function 赞助说明() {
 		$('#auth').css('display', 'none');
