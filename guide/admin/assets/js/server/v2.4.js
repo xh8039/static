@@ -38,7 +38,7 @@
 	function 赞助弹窗(data = {}) {
 		$.confirm({
 			title: data.title,
-			content: data.msg,
+			content: data.message,
 			animation: 'scale',
 			closeAnimation: 'scale',
 			buttons: {
