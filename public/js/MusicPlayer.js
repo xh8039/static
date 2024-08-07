@@ -54,11 +54,26 @@ class MusicPlayer {
 			}
 		}
 		this.PLAYER.on('loadeddata', () => {
-			this.OPTIONS['autotheme'] ? this.autoTheme(this.PLAYER.list.index) : null
+			this.OPTIONS['autotheme'] ? this.autoTheme(this.PLAYER.list.index) : null;
+			if ('mediaSession' in navigator) {
+				let music = this.PLAYER.list.audios[this.PLAYER.list.index];
+				navigator.mediaSession.metadata = new MediaMetadata({
+					title: music.name,
+					artist: music.artist,
+					// album: '专辑名',
+					artwork: [
+						{src: music.pic},
+						{src: music.cover},
+						// { src: '封面图片URL', sizes: '256x256', type: 'image/png' },
+						// { src: '封面图片URL', sizes: '512x512', type: 'image/png' }
+					]
+				});
+			}
 		})
 		this.PLAYER.on('error', () => {
-			this.PLAYER.skipForward()
-			this.PLAYER.seek(0)
+			console.log(this.PLAYER.list.audios[this.PLAYER.list.index]);
+			this.PLAYER.skipForward();
+			this.PLAYER.seek(0);
 		})
 	}
 
